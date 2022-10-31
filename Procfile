@@ -1,2 +1,1 @@
-#Procfile
-web: gunicorn m5-komercio-vshiryu.wsgi #não esqueça de ajustar o nome
+web: waitress-serve --port=$PORT nome_do_seu_projeto.wsgi:application
