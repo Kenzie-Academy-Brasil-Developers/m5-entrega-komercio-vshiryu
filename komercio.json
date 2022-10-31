@@ -1,0 +1,68 @@
+[
+  {
+    "model": "user.account",
+    "pk": "7c261d67-4744-418b-a631-5e44a2896eb9",
+    "fields": {
+      "password": "pbkdf2_sha256$390000$onb9KEaMcIt08dXk4QFWUg$fayFTb/Z+v4sPW6zbPn1ZEjLkTyUJ/TtvHWN2J5if1M=",
+      "last_login": null,
+      "is_superuser": false,
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-10-29T22:37:48.568Z",
+      "username": "ale2",
+      "first_name": "alexandre",
+      "last_name": "alves",
+      "is_seller": true,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
+[
+    {
+      "model": "product.product",
+      "pk": "32613e08-3141-4ff4-855d-632dbcfe83a3",
+      "fields": {
+        "description": "Smartband XYZ 3.0",
+        "price": "100.99",
+        "quantity": 15,
+        "is_active": true,
+        "seller": "7c261d67-4744-418b-a631-5e44a2896eb9"
+      }
+    },
+    {
+      "model": "product.product",
+      "pk": "50a7a876-1627-432b-83e6-1126cfa2cbfe",
+      "fields": {
+        "description": "Smartband XYZ 3.0",
+        "price": "100.99",
+        "quantity": 15,
+        "is_active": true,
+        "seller": "7c261d67-4744-418b-a631-5e44a2896eb9"
+      }
+    },
+    {
+      "model": "product.product",
+      "pk": "9152ea35-dd3c-439e-9bef-0e9d5129110c",
+      "fields": {
+        "description": "Smartband XYZ 3.0",
+        "price": "100.99",
+        "quantity": 15,
+        "is_active": true,
+        "seller": "7c261d67-4744-418b-a631-5e44a2896eb9"
+      }
+    },
+    {
+      "model": "product.product",
+      "pk": "f63a3ca6-dbea-44b8-be30-331dc3b3227e",
+      "fields": {
+        "description": "Smartband XYZ 10000001",
+        "price": "100.99",
+        "quantity": 15,
+        "is_active": true,
+        "seller": "7c261d67-4744-418b-a631-5e44a2896eb9"
+      }
+    }
+  ]
+  
