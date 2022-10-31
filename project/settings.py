@@ -15,6 +15,8 @@ from pathlib import Path
 import os
 import dotenv
 
+import dj_database_url
+
 dotenv.load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +32,7 @@ SECRET_KEY = "django-insecure-seyoki3luo=0c2(k)@s&%i!fi$($ph&#)@2v*zjz4i(y8=dmzj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["m5-komercio-vshiryu.herokuapp.com", "localhost"]
 
 
 # Application definition
@@ -152,3 +154,12 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "user.Account"
+
+
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
+if DATABASE_URL:
+    db_from_env = dj_database_url.config(
+        default=DATABASE_URL, conn_max_age=500, ssl_require=True
+    )
+    DATABASES["default"].update(db_from_env)
