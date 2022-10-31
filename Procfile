@@ -1,2 +1,1 @@
-#Procfile
-web: gunicorn project.wsgi #não esqueça de ajustar o nome
+web: waitress-serve --port=$PORT project.wsgi:application
