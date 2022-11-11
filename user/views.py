@@ -2,11 +2,12 @@ from django.shortcuts import render
 from rest_framework import generics
 
 from user.models import Account
-from user.serializer import AccountSerializer, LoginSerializer
+from user.serializer import AccountSerializer, LoginSerializer, SoftDeleteSerializer
 from rest_framework.views import Response, Request, status, APIView
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.authentication import TokenAuthentication
+from .permissions import isAdm, IsAccountOwner
 
 # Create your views here.
 
@@ -31,7 +32,10 @@ class LoginView(APIView):
 
         token = Token.objects.get_or_create(user=user)[0]
 
-        return Response({"token": token.key, "user_id": user.id}, status.HTTP_200_OK)
+        return Response(
+            {"token": token.key, "user_id": user.id, "is_seller": user.is_seller},
+            status.HTTP_200_OK,
+        )
 
 
 class AccountsNewest(generics.ListAPIView):
@@ -42,3 +46,19 @@ class AccountsNewest(generics.ListAPIView):
         accounts = self.kwargs["num"]
         ordered_accounts = self.queryset.order_by("-date_joined")[0:accounts]
         return ordered_accounts
+
+
+class UpdateAccount(generics.UpdateAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAccountOwner]
+
+    serializer_class = AccountSerializer
+    queryset = Account.objects.all()
+
+
+class SoftDelete(generics.UpdateAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [isAdm]
+
+    queryset = Account.objects.all()
+    serializer_class = SoftDeleteSerializer

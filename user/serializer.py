@@ -35,5 +35,24 @@ class LoginSerializer(serializers.Serializer):
     password = serializers.CharField(write_only=True)
 
 
-class AccUpdateSerializer(serializers.ModelSerializer):
-    ...
+class SoftDeleteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = [
+            "id",
+            "username",
+            "first_name",
+            "last_name",
+            "is_seller",
+            "date_joined",
+            "is_active",
+        ]
+        read_only_fields = [
+            "is_superuser",
+            "updated_at",
+            "date_joined",
+            "username",
+            "first_name",
+            "last_name",
+            "is_seller",
+        ]
